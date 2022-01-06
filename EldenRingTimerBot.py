@@ -61,7 +61,7 @@ class CustomClient(discord.Client):
         # return f'\nElden Ring drops in {days_until_elden_ring_releases.days} days'
 
         # Specified date
-        date1 = datetime.datetime.strptime('2022-02-24 08:00:00', '%Y-%m-%d %H:%M:%S')
+        date1 = datetime.datetime.strptime('2022-02-29 00:00:00', '%Y-%m-%d %H:%M:%S')
 
         # Current date
         date2 = datetime.datetime.now()
@@ -79,14 +79,14 @@ class CustomClient(discord.Client):
         return final_message
 
     def date_diff_in_seconds(self, dt2, dt1):
-        timedelta = dt2 - dt1
+        timedelta = dt1 - dt2
         return timedelta.days * 24 * 3600 + timedelta.seconds
 
     def dhms_from_seconds(self, seconds):
         minutes, seconds = divmod(seconds, 60)
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
-        return abs(days), hours - 2
+        return abs(days), hours
 
     @tasks.loop(seconds=3600)
     async def send_repeat_message(self):
