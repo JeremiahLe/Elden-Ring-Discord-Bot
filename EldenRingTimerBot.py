@@ -86,7 +86,7 @@ class CustomClient(discord.Client):
         minutes, seconds = divmod(seconds, 60)
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
-        return abs(days), hours
+        return abs(days), hours + 6
 
     @tasks.loop(seconds=3600)
     async def send_repeat_message(self):
