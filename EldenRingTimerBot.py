@@ -61,13 +61,13 @@ class CustomClient(discord.Client):
         # return f'\nElden Ring drops in {days_until_elden_ring_releases.days} days'
 
         # Specified date
-        date1 = datetime.datetime.strptime('2022-02-24 00:00:00', '%Y-%m-%d %H:%M:%S')
+        date1 = datetime.datetime.strptime('2022-02-24 08:00:00', '%Y-%m-%d %H:%M:%S')
 
         # Current date
         date2 = datetime.datetime.now()
 
         return f'\nElden Ring drops in ' \
-               f'%d days, %d hours\n.' \
+               f'%d days, %d hours.\n' \
                % self.dhms_from_seconds(self.date_diff_in_seconds(date2, date1))
 
     def elden_ring_message(self):
