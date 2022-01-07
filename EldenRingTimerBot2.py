@@ -52,9 +52,13 @@ class CustomClient(discord.Client):
         return str(new_timezone)
 
     def get_appended_date(self):
-        current_date = pytz.utc.localize(datetime.datetime.utcnow())
-        new_date = current_date.astimezone(pytz.timezone("America/Chicago"))
-        date_format = new_date.strftime("%B %d, %Y")
+        # current_date = pytz.utc.localize(datetime.datetime.utcnow())
+        # new_date = current_date.astimezone(pytz.timezone("America/Chicago"))
+        local_timezone = datetime.datetime.utcnow()
+        tz = pytz.timezone('America/Chicago')
+        new_timezone = local_timezone.replace(tzinfo=pytz.utc).astimezone(tz)
+
+        date_format = new_timezone.strftime("%B %d, %Y")
         appended_date = "\nToday's date is: " + date_format
         return appended_date
 
