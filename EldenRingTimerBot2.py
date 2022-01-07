@@ -59,7 +59,7 @@ class CustomClient(discord.Client):
         new_timezone = local_timezone.replace(tzinfo=pytz.utc).astimezone(tz)
 
         date_format = new_timezone.strftime("%B %d, %Y")
-        appended_date = "\nToday's date is: " + date_format
+        appended_date = "\nToday's date is: " + date_format + " (Timezone: " + str(tzlocal.get_localzone()) + ")"
         return appended_date
 
     def get_elden_ring_release_date(self):
