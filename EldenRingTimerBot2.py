@@ -49,7 +49,7 @@ class CustomClient(discord.Client):
         local_timezone = datetime.datetime.utcnow()
         tz = pytz.timezone('America/Chicago')
         new_timezone = local_timezone.replace(tzinfo=pytz.utc).astimezone(tz)
-        return str(date.today())
+        return str(new_timezone)
 
     def get_appended_date(self):
         current_date = pytz.utc.localize(datetime.datetime.utcnow())
