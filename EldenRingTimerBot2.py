@@ -46,9 +46,9 @@ class CustomClient(discord.Client):
         return str(random.choice(responses))
 
     def get_current_date(self):
-        local_timezone = tzlocal.get_localzone()
+        local_timezone = datetime.datetime.utcnow()
         tz = pytz.timezone('America/Chicago')
-        new_timezone = pytz.utc.localize(local_timezone).astimezone(tz)
+        new_timezone = local_timezone.replace(tzinfo=pytz.utc).astimezone(tz)
         return str(date.today())
 
     def get_appended_date(self):
