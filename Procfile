@@ -1,1 +1,1 @@
-worker: python EldenRingTimerBot.py
+worker: python EldenRingTimerBot2.py
