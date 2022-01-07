@@ -73,7 +73,7 @@ class CustomClient(discord.Client):
         date2 = datetime.datetime.now()
 
         return f'\nElden Ring drops in ' \
-               f'%d days, %d hours.\n' \
+               f'%d days, %d hours, %d minutes.\n' \
                % self.dhms_from_seconds(self.date_diff_in_seconds(date2, date1))
 
     def elden_ring_message(self):
@@ -92,7 +92,7 @@ class CustomClient(discord.Client):
         minutes, seconds = divmod(seconds, 60)
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
-        return abs(days), hours
+        return abs(days), hours, minutes
 
     @tasks.loop(seconds=3600)
     async def send_repeat_message(self):
