@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
-CHANNEL_ID = 617825580116606988
+CHANNEL_ID = 931556059624112128
 
 client: Client = discord.Client()
 
