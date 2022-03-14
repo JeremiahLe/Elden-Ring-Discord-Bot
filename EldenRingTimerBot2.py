@@ -16,7 +16,7 @@ from dotenv import load_dotenv
 load_dotenv()
 TOKEN = os.getenv('DISCORD_TOKEN')
 GUILD = os.getenv('DISCORD_GUILD')
-CHANNEL_ID = 931556059624112128
+CHANNEL_ID = os.getenv('DISCORD_CHANNEL_ID')
 
 client: Client = discord.Client()
 
@@ -97,12 +97,38 @@ class CustomClient(discord.Client):
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
         return abs(days), hours, minutes
+    
+    def return_imgur_link(self, img):
+        if img == 'Onward':
+            return "https://imgur.com/BjYD2bA"
+        elif img == 'Rest':
+            return "https://imgur.com/ZnmePCA"
+        elif img == 'Dead':
+            return "https://imgur.com/a/f6KvDGk"
 
     @tasks.loop(seconds=3600)
     async def send_repeat_message(self):
         channel_to_send = self.get_channel(CHANNEL_ID)
         await channel_to_send.send(self.elden_ring_message())
+     
+    # Final Event - Manually triggered #
+    
+    # async def send_repeat_message(self):
+    #    channel_to_send = self.get_channel(CHANNEL_ID)
+    #    await channel_to_send.send(
+    #        "Haven't you heard? Elden Ring has released. Onward to the lands between, Fair Tarnished! For Catarina!",
+    #        delete_after=6)
+    #    await channel_to_send.send(self.return_imgur_link('Onward'), delete_after=6)
+    #    time.sleep(8)
 
+    #   await channel_to_send.send(
+    #        "Me, on the other hand, I need a rest. Oh, don't worry, it's a the best thing after showing one's heroic valour! Hahahahaha....",
+    #        delete_after=8)
+    #    await channel_to_send.send(self.return_imgur_link('Rest'), delete_after=8)
+    #    time.sleep(10)
+
+    #    await channel_to_send.send(self.return_imgur_link('Dead'))
+        
 
 client = CustomClient()
 client.run(TOKEN)
